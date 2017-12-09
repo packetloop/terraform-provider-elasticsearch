@@ -3,13 +3,18 @@ go:
   - 1.8
   - 1.9
   - master
+env:
+  - DEP_VERSION="0.3.2"
+before_install:
+  # Download the binary to bin folder in $GOPATH
+  - curl -L -s https://github.com/golang/dep/releases/download/v${DEP_VERSION}/dep-linux-amd64 -o $GOPATH/bin/dep
+  # Make the binary executable
+  - chmod +x $GOPATH/bin/dep
 install:
-  - go get -v github.com/Masterminds/glide
-  - cd $GOPATH/src/github.com/Masterminds/glide && git checkout v0.13.1 && go install && cd -
-  - glide install
+  - dep ensure
 script:
-- go build -v
-- go test -v -cover
+  - go build -v
+  - go test -v -cover
 deploy:
   provider: releases
   api_key:

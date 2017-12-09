@@ -111,15 +111,15 @@ EOF
 
 ### Requirements
 
-* [Golang](https://golang.org/dl/) >= 1.7
-* [Glide](https://github.com/Masterminds/glide)
+* [Golang](https://golang.org/dl/) >= 1.8.
+* [dep](https://github.com/golang/dep#setup)
 
 
 ```
 # Ensure that this folder is at the following location: `${GOPATH}/src/github.com/phillbaker/terraform-provider-elasticsearch`
 cd $GOPATH/src/github.com/phillbaker/terraform-provider-elasticsearch
 
-glide install
+dep ensure
 go build -o /path/to/binary/terraform-provider-elasticsearch
 ```
 
